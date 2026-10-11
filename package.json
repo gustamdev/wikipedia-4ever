@@ -1,0 +1,86 @@
+{
+  "name": "wikipedia-4ever",
+  "private": true,
+  "version": "0.0.0",
+  "description": "App desktop que roda LLMs localmente e responde perguntas com RAG sobre a Wikipedia, com citação de fontes e funcionamento offline.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gustamdev/wikipedia-4ever.git"
+  },
+  "type": "module",
+  "main": "dist-electron/main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "dist": "tsc && vite build && electron-builder",
+    "test": "node --test \"electron/**/*.test.ts\"",
+    "inspect:parquet": "node scripts/inspect-parquet.ts",
+    "chunk:sample": "node scripts/chunk-sample.ts",
+    "rag:eval": "node scripts/rag-eval.ts",
+    "setup:dev": "node scripts/setup-dev.ts",
+    "index:sample": "node scripts/ingest-e2e.ts --data dev-data/userdata --embed-cache dev-data/embedding-models --language simple --stop-after 800"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "3.8.1",
+    "@lancedb/lancedb": "0.39.0",
+    "apache-arrow": "18.1.0",
+    "better-sqlite3": "^13.0.3",
+    "hyparquet": "1.31.2",
+    "hyparquet-compressors": "1.1.2",
+    "lancedb-intel": "npm:@lancedb/lancedb@0.22.3",
+    "node-llama-cpp": "^3.22.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-markdown": "^10.1.0",
+    "rehype-highlight": "^7.0.2",
+    "rehype-sanitize": "^6.0.0",
+    "remark-gfm": "^4.0.1"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^9.6.0",
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^6.1.1",
+    "electron": "^44.4.5",
+    "electron-builder": "^26.15.3",
+    "esbuild": "^0.28.2",
+    "typescript": "~6.0.2",
+    "vite": "^8.3.0",
+    "vite-plugin-electron": "^0.29.0",
+    "vite-plugin-electron-renderer": "^0.14.6"
+  },
+  "build": {
+    "appId": "com.wikipedia4ever.app",
+    "productName": "Wikipedia 4ever",
+    "npmRebuild": false,
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*",
+      "!node_modules/@lancedb/lancedb/node_modules/**",
+      "!node_modules/openai/**"
+    ],
+    "mac": {
+      "target": "dmg",
+      "category": "public.app-category.reference"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "asarUnpack": [
+      "**/*.node",
+      "node_modules/node-llama-cpp/**",
+      "node_modules/@node-llama-cpp/**",
+      "node_modules/better-sqlite3/**",
+      "node_modules/onnxruntime-node/**",
+      "node_modules/sharp/**",
+      "node_modules/@img/**",
+      "node_modules/@lancedb/**"
+    ],
+    "directories": {
+      "output": "release"
+    }
+  }
+}

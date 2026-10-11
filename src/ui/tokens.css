@@ -1,0 +1,85 @@
+/* Único arquivo com cores e espaçamentos literais (ver README → Interface). */
+:root {
+  --bg: #faf9f5;
+  --surface: #f0eee6;
+  --border: #dedbd0;
+  --text: #1f1e1b;
+  --muted: #6f6c63;
+  --accent: #c15f3c;
+  --accent-text: #faf9f5;
+  --danger: #b3261e;
+  --ok: #2e7d32;
+  --warn: #9a6700;
+  --focus: #c15f3c;
+  --code-bg: #f0eee6;
+  --hl-keyword: #8a3ffc;
+  --hl-string: #2e7d32;
+  --hl-number: #b35c00;
+  --hl-comment: #8a877d;
+  --hl-title: #1f5fae;
+  --hl-attr: #9a6700;
+
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-6: 24px;
+  --s-8: 32px;
+  --s-12: 48px;
+
+  --radius: 4px;
+  --font: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --font-size: 13px;
+  --line-height: 1.5;
+  --sidebar-width: 240px;
+  --content-max: 820px;
+  --transition: 120ms;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1f1e1b;
+    --surface: #2a2926;
+    --border: #3d3b36;
+    --text: #ece9df;
+    --muted: #9a968a;
+    --accent: #e08a68;
+    --accent-text: #1f1e1b;
+    --danger: #f2837a;
+    --ok: #7fc582;
+    --warn: #d9a441;
+    --focus: #e08a68;
+    --code-bg: #2a2926;
+    --hl-keyword: #c4a7ff;
+    --hl-string: #8fd18f;
+    --hl-number: #f0a868;
+    --hl-comment: #8a867b;
+    --hl-title: #8cb8ff;
+    --hl-attr: #e0c070;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #1f1e1b;
+  --surface: #2a2926;
+  --border: #3d3b36;
+  --text: #ece9df;
+  --muted: #9a968a;
+  --accent: #e08a68;
+  --accent-text: #1f1e1b;
+  --danger: #f2837a;
+  --ok: #7fc582;
+  --warn: #d9a441;
+  --focus: #e08a68;
+  --code-bg: #2a2926;
+  --hl-keyword: #c4a7ff;
+  --hl-string: #8fd18f;
+  --hl-number: #f0a868;
+  --hl-comment: #8a867b;
+  --hl-title: #8cb8ff;
+  --hl-attr: #e0c070;
+  color-scheme: dark;
+}
